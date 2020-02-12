@@ -1,4 +1,4 @@
-# demo1
+# LoveFrom Inc VueJs website
 
 ## Project setup
 ```
