@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="menu-screen" v-bind:class="{top: top, opacity: opacity}">
+    <div @click="change" id="menu-screen" v-bind:class="{top: top, opacity: opacity}">
       <router-link to="/">START</router-link>
       <router-link to="/investing">INVESTING</router-link>
       <router-link to="/jobs">JOBS</router-link>
@@ -17,13 +17,15 @@
                     <div class="lines"></div>
                 </div>
 
-                <div id="logo-name">
-                    <div id="logo"></div>
-                    <h1>LoveFrom</h1>
-                </div>
+                <router-link to="/">
+                  <div id="logo-name">
+                      <div id="logo"></div>
+                      <h1>LoveFrom</h1>
+                  </div>
+                </router-link>
 
                 <div id="lg-links">
-                  <router-link to="/">START</router-link>
+                  <!-- <router-link to="/">START</router-link> -->
                   <router-link to="/investing">INVESTING</router-link>
                   <router-link to="/jobs">JOBS</router-link>
                   <router-link to="/about">ABOUT</router-link>
@@ -184,6 +186,15 @@ footer{
   margin-top: 34px;
   background-color: #0d0d0d;
 }
+.router-link-active{
+  text-decoration: none !important;
+}
+.router-link-active #logo-name{
+  color: #2a2a2a;
+}
+#logo::after{
+  display: none;
+}
 @media screen and (min-width: 768px){
   .std{
     padding-top: 38px;
@@ -225,6 +236,25 @@ footer{
     width: 100%;
     justify-content: center;
     
+  }
+  #logo::after{
+    display: block;
+    content: 'Home Page';
+    width: 120px;
+    position: relative;
+    bottom: -150%;
+    background-color: #2a2a2a;
+    color: #fff;
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    left: -17px;
+    opacity: 0;
+    transition: 0.6s all;
+  }
+  #logo:hover::after{
+    bottom: -125%;
+    opacity: 1;
   }
 }
 </style>
